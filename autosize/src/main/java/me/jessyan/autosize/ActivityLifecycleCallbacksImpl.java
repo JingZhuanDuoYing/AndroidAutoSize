@@ -22,6 +22,8 @@ import android.os.Bundle;
 import static me.jessyan.autosize.AutoSizeConfig.DEPENDENCY_ANDROIDX;
 import static me.jessyan.autosize.AutoSizeConfig.DEPENDENCY_SUPPORT;
 
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * ================================================
  * {@link ActivityLifecycleCallbacksImpl} 可用来代替在 BaseActivity 中加入适配代码的传统方式
@@ -57,8 +59,8 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
         if (AutoSizeConfig.getInstance().isCustomFragment()) {
             if (mFragmentLifecycleCallbacksToAndroidx != null && activity instanceof androidx.fragment.app.FragmentActivity) {
                 ((androidx.fragment.app.FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacksToAndroidx, true);
-            } else if (mFragmentLifecycleCallbacks != null && activity instanceof android.support.v4.app.FragmentActivity) {
-                ((android.support.v4.app.FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
+            } else if (mFragmentLifecycleCallbacks != null && activity instanceof FragmentActivity) {
+                ((FragmentActivity) activity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks, true);
             }
         }
 
